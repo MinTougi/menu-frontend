@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -6,10 +6,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { MapPin } from "lucide-react";
-import { useSpots } from "../hooks/use-hook";
+import { MapPin } from "lucide-react"
+import { useSpots } from "../hooks/use-hook"
 import type { SpotDTO } from "../dtos/spot.dto";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 interface SpotDialogProps {
   open: boolean;
@@ -17,10 +17,13 @@ interface SpotDialogProps {
   selectedSpotId?: string;
 }
 
-export function SpotDialog({ open, onSelect, selectedSpotId }: SpotDialogProps) {
+export function SpotDialog({
+  open,
+  onSelect,
+  selectedSpotId
+}: SpotDialogProps) {
 
-
-  const { data: spots = [] } = useSpots()
+  const { data: spots = [] } = useSpots();
 
   return (
     <Dialog open={open}>
@@ -31,18 +34,29 @@ export function SpotDialog({ open, onSelect, selectedSpotId }: SpotDialogProps) 
             Escolha a mesa que você está para fazer o pedido.
           </DialogDescription>
         </DialogHeader>
+
         <div className="min-h-0 overflow-y-auto">
           <div className="grid grid-cols-3 gap-3">
-            {spots.map((spot) => (
-              <Button key={spot.id} variant="outline" 
-              className={cn('h-auto min-h-20 flex-col p-4', spot.id === selectedSpotId && 'border-primary bg-accent text-primary')}
-                onClick={() => onSelect(spot)}>
+             
+            { spots.map( spot => (
+              <Button 
+                key={spot.id}
+                variant="outline"
+                className={cn(
+                  'h-auto min-h-20 flex-col p-4',
+                  spot.id === selectedSpotId && 'border-primary bg-accent text-primary'
+                )}
+                
+                onClick={() => onSelect(spot)}
+              >
                 <MapPin className="size-6" />
-                {spot.name}
-              </Button>))}
+                { spot.name }
+              </Button>
+            ))}
           </div>
         </div>
+
       </DialogContent>
     </Dialog>
-  );
+  )
 }
