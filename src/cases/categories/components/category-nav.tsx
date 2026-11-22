@@ -22,13 +22,15 @@ export function CategoryNav() {
                     <Link
                      to={`/products?categoryId=${category.id}`}
                      className={cn(
-                        'relative flex w-full items-center gap-3 px-5 py-5',
-                        'font-menu text-lg font-semibold uppercase tracking-tight',
-                        'border-xl border border-transparent',
+                        'relative flex w-full min-w-0 items-center gap-3 px-4 py-5',
+                        'font-menu text-sm font-semibold uppercase tracking-tight',
+                        'border border-transparent',
                         'transition-colors duration-200',
                         'hover:z-10 hover:text-[#B86A2C]',
-                        selectedCategoryId === category.id ? ['border-[#B86A2C]', 'bg-primary/5', 'text-[#B86A2C]'] : ['text-foregroud', 'border-b-border/60']
-                     )}
+                        selectedCategoryId === category.id
+                            ? ['border-[#B86A2C]', 'bg-primary/5', 'text-[#B86A2C]']
+                            : ['text-foreground', 'border-b-border/60']
+                    )}
                     >
                      {category.icon ? (
                         <img src={category.icon}
